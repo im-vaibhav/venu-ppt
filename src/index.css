@@ -1,12 +1,12 @@
+/* Source Sans Pro (v3) from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap');
+
 /* Museo Sans — declare if self-hosted; falls back gracefully */
 @font-face {
   font-family: 'Museo Sans';
   src: local('Museo Sans'), local('MuseoSans-500'), local('MuseoSans');
   font-weight: 100 900;
 }
-
-/* Source Sans Pro (v3) from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap');
 
 :root {
   --bg: #060606;
