@@ -1,0 +1,435 @@
+/* ── Slide 6 — Safe by Design: Observe vs Act ── */
+
+/* ── Root ── */
+.s6-root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #060606;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ── Ambient glow — bottom-right ── */
+.s6-glow {
+  position: absolute;
+  bottom: -150px;
+  right: -150px;
+  width: 560px;
+  height: 560px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    var(--accent-glow) 0%,
+    transparent 68%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Header ── */
+.s6-header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 52px 0;
+  flex-shrink: 0;
+}
+
+.s6-slide-label {
+  font-family: var(--font-body);
+  font-size: clamp(0.65rem, 1vw, 0.8rem);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* ── Title block ── */
+.s6-title-block {
+  position: relative;
+  z-index: 2;
+  padding: 14px 52px 0;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.s6-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3.2vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.022em;
+  color: #ffffff;
+}
+
+.s6-title-accent {
+  color: var(--accent);
+}
+
+.s6-title-vs {
+  color: rgba(255, 255, 255, 0.3);
+  font-weight: 300;
+  font-size: 0.85em;
+  padding: 0 4px;
+}
+
+.s6-title-act {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.s6-title-rule {
+  width: 48px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+/* ── Two-column layout ── */
+.s6-columns {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 40px 1fr;
+  gap: 0 8px;
+  padding: 18px 52px 0;
+  min-height: 0;
+  align-items: start;
+}
+
+/* ── Individual column ── */
+.s6-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+}
+
+/* ── Column header ── */
+.s6-col-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.s6-col-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.s6-col-badge--observe {
+  background: rgba(0, 246, 255, 0.08);
+  border: 1px solid rgba(0, 246, 255, 0.25);
+}
+
+.s6-col-badge--act {
+  background: rgba(0, 246, 255, 0.05);
+  border: 1px solid rgba(0, 246, 255, 0.15);
+}
+
+.s6-col-badge svg {
+  width: 22px;
+  height: 22px;
+}
+
+.s6-col-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.s6-col-title {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.1;
+}
+
+.s6-col-mode {
+  font-family: var(--font-body);
+  font-size: clamp(0.65rem, 0.9vw, 0.75rem);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-radius: 3px;
+  padding: 1px 7px;
+  display: inline-block;
+}
+
+.s6-col-mode--observe {
+  color: #00F6FF;
+  background: rgba(0, 246, 255, 0.1);
+  border: 1px solid rgba(0, 246, 255, 0.25);
+}
+
+.s6-col-mode--act {
+  color: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* ── Items list ── */
+.s6-items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+/* ── Single item row ── */
+.s6-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  padding: 13px 15px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.02);
+  position: relative;
+  transition: background 0.22s, border-color 0.22s;
+}
+
+.s6-item--observe:hover {
+  background: rgba(0, 246, 255, 0.04);
+  border-color: rgba(0, 246, 255, 0.25);
+}
+
+.s6-item--act:hover {
+  background: rgba(255, 255, 255, 0.035);
+  border-color: rgba(0, 246, 255, 0.2);
+}
+
+/* Left accent stripe per column */
+.s6-item--observe::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 10%; bottom: 10%;
+  width: 2px;
+  background: var(--accent);
+  border-radius: 1px;
+  opacity: 0.5;
+}
+
+.s6-item--act::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 10%; bottom: 10%;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 1px;
+}
+
+.s6-item-icon {
+  width: clamp(28px, 3vw, 34px);
+  height: clamp(28px, 3vw, 34px);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.s6-item-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.s6-item-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+}
+
+.s6-item-label {
+  font-family: var(--font-display);
+  font-size: clamp(0.85rem, 1.25vw, 1rem);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.s6-item-detail {
+  font-family: var(--font-body);
+  font-size: clamp(0.7rem, 0.95vw, 0.83rem);
+  font-weight: 300;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.42);
+}
+
+/* ── Gate lock pill (Act column only) ── */
+.s6-gate-pill {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+  align-self: flex-start;
+  margin-top: 2px;
+  padding: 3px 8px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 246, 255, 0.2);
+  background: rgba(0, 246, 255, 0.05);
+  font-family: var(--font-body);
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: rgba(0, 246, 255, 0.7);
+  white-space: nowrap;
+}
+
+.s6-gate-pill svg {
+  width: 10px;
+  height: 12px;
+  flex-shrink: 0;
+}
+
+/* ── Bottom stamp ── */
+.s6-stamp {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-body);
+  font-size: clamp(0.68rem, 0.9vw, 0.78rem);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+.s6-stamp svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.s6-stamp--observe {
+  color: rgba(0, 246, 255, 0.55);
+}
+
+.s6-stamp--act {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* ── Centre divider ── */
+.s6-divider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  height: 100%;
+  padding: 40px 0 20px;
+}
+
+.s6-divider-line {
+  flex: 1;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 246, 255, 0.15) 30%,
+    rgba(0, 246, 255, 0.15) 70%,
+    transparent 100%
+  );
+}
+
+.s6-divider-badge {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(0, 246, 255, 0.06);
+  border: 1px solid rgba(0, 246, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin: 10px 0;
+}
+
+.s6-divider-badge svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ── Key message banner ── */
+.s6-key-message {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 14px 52px 0;
+  padding: 13px 32px;
+  border: 1px solid rgba(0, 246, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(0, 246, 255, 0.04);
+  flex-shrink: 0;
+}
+
+.s6-quote-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  opacity: 0.65;
+}
+
+.s6-key-text {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.8vw, 1.4rem);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+  letter-spacing: -0.01em;
+}
+
+.s6-key-accent {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* ── Footer ── */
+.s6-footer {
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 52px 18px;
+  margin-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.s6-presenter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.04em;
+}
+
+.s6-presenter-name  { font-weight: 600; color: rgba(255, 255, 255, 0.5); }
+.s6-presenter-role  { font-weight: 400; }
+.s6-presenter-sep   { opacity: 0.35; }
+.s6-presenter-date  { font-weight: 300; }
+
+.s6-page {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.2);
+}

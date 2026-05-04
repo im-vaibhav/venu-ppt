@@ -1,0 +1,244 @@
+/* ── Slide 2 — The Distributed Caching Challenge ── */
+
+/* ── Root ── */
+.s2-root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #060606;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0;
+}
+
+/* ── Ambient glow (top-right corner accent) ── */
+.s2-glow {
+  position: absolute;
+  top: -120px;
+  right: -120px;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    var(--accent-glow) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Header ── */
+.s2-header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 52px 0;
+  flex-shrink: 0;
+}
+
+.s2-slide-label {
+  font-family: var(--font-body);
+  font-size: clamp(0.65rem, 1vw, 0.8rem);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+
+
+/* ── Title block ── */
+.s2-title-block {
+  position: relative;
+  z-index: 2;
+  padding: 22px 52px 0;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.s2-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.6vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+
+.s2-title-accent {
+  color: var(--accent);
+}
+
+.s2-title-rule {
+  width: 48px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+.s2-lead {
+  font-family: var(--font-body);
+  font-size: clamp(0.85rem, 1.4vw, 1.05rem);
+  font-weight: 300;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.5);
+  max-width: 680px;
+}
+
+/* ── Cards grid ── */
+.s2-cards {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 24px 52px 0;
+  align-items: stretch;
+}
+
+/* ── Single card ── */
+.s2-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 8px;
+  padding: 28px 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.25s, background 0.25s;
+}
+
+.s2-card:hover {
+  background: rgba(255, 255, 255, 0.055);
+  border-color: rgba(0, 246, 255, 0.35);
+}
+
+/* Faint cyan top accent on hover */
+.s2-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.s2-card:hover::before {
+  opacity: 1;
+}
+
+/* ── Card top row: number + icon ── */
+.s2-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.s2-card-number {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.06);
+  letter-spacing: -0.03em;
+  user-select: none;
+}
+
+.s2-card-icon {
+  width: clamp(40px, 5vw, 52px);
+  height: clamp(40px, 5vw, 52px);
+  flex-shrink: 0;
+}
+
+.s2-card-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Card title ── */
+.s2-card-title {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+/* ── Card body ── */
+.s2-card-body {
+  font-family: var(--font-body);
+  font-size: clamp(0.78rem, 1.1vw, 0.92rem);
+  font-weight: 300;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.5);
+  flex: 1;
+}
+
+/* ── Bottom accent bar ── */
+.s2-card-bar {
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-faint) 0%, transparent 70%);
+  border-radius: 1px;
+  margin-top: auto;
+}
+
+/* ── Footer ── */
+.s2-footer {
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 52px 20px;
+  margin-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.s2-presenter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.04em;
+}
+
+.s2-presenter-name {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.s2-presenter-role {
+  font-weight: 400;
+}
+
+.s2-presenter-sep {
+  opacity: 0.35;
+}
+
+.s2-presenter-date {
+  font-weight: 300;
+}
+
+.s2-page {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.2);
+}

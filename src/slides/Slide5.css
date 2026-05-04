@@ -1,0 +1,366 @@
+/* ── Slide 5 — Introducing Agentic Ops ── */
+
+/* ── Root ── */
+.s5-root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #060606;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ── Ambient glows ── */
+.s5-glow-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(0, 246, 255, 0.07) 0%,
+    transparent 65%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.s5-glow-corner {
+  position: absolute;
+  top: -120px;
+  right: -120px;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    var(--accent-glow) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Header ── */
+.s5-header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 52px 0;
+  flex-shrink: 0;
+}
+
+.s5-slide-label {
+  font-family: var(--font-body);
+  font-size: clamp(0.65rem, 1vw, 0.8rem);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* ── Title block ── */
+.s5-title-block {
+  position: relative;
+  z-index: 2;
+  padding: 14px 52px 0;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.s5-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+}
+
+.s5-title-accent {
+  color: var(--accent);
+}
+
+.s5-title-rule {
+  width: 48px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+.s5-subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(0.88rem, 1.4vw, 1.05rem);
+  font-weight: 300;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.5);
+  max-width: 640px;
+}
+
+.s5-subtitle em {
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* ── Diagram ── */
+.s5-diagram {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 10px 52px 0;
+  gap: 0 20px;
+  min-height: 0;
+}
+
+/* ── Spoke columns ── */
+.s5-spokes {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.s5-spoke-group-label {
+  font-family: var(--font-body);
+  font-size: clamp(0.6rem, 0.9vw, 0.72rem);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.25);
+  margin-bottom: 4px;
+}
+
+.s5-spoke-group-label--right {
+  text-align: right;
+}
+
+/* ── Individual spoke node ── */
+.s5-spoke-node {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 8px;
+  padding: 12px 16px;
+  position: relative;
+  transition: background 0.22s, border-color 0.22s;
+}
+
+.s5-spoke-node:hover {
+  background: rgba(0, 246, 255, 0.05);
+  border-color: rgba(0, 246, 255, 0.3);
+}
+
+/* Right-side nodes — reverse order (icon right, text left) */
+.s5-spoke-node--right {
+  flex-direction: row-reverse;
+}
+
+.s5-spoke-node--right .s5-spoke-text {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.s5-spoke-icon {
+  width: clamp(28px, 3.2vw, 36px);
+  height: clamp(28px, 3.2vw, 36px);
+  flex-shrink: 0;
+}
+
+.s5-spoke-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.s5-spoke-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.s5-spoke-label {
+  font-family: var(--font-display);
+  font-size: clamp(0.85rem, 1.25vw, 1rem);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.s5-spoke-sub {
+  font-family: var(--font-body);
+  font-size: clamp(0.68rem, 0.9vw, 0.8rem);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* ── Connector lines (CSS pseudo-elements) ── */
+.s5-connector {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 1px;
+  width: 20px;
+  background: linear-gradient(90deg, transparent, rgba(0, 246, 255, 0.4));
+  pointer-events: none;
+}
+
+.s5-connector--right {
+  right: -20px;
+}
+
+.s5-connector--left {
+  left: -20px;
+  background: linear-gradient(90deg, rgba(0, 246, 255, 0.4), transparent);
+}
+
+/* ── Centre hub ── */
+.s5-hub-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(130px, 16vw, 180px);
+  height: clamp(130px, 16vw, 180px);
+  flex-shrink: 0;
+}
+
+/* Pulse rings */
+.s5-pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 246, 255, 0.2);
+  animation: s5-pulse 3s ease-out infinite;
+}
+
+.s5-pulse--2 {
+  animation-delay: 1.5s;
+}
+
+@keyframes s5-pulse {
+  0%   { transform: scale(0.85); opacity: 0.6; }
+  100% { transform: scale(1.35); opacity: 0;   }
+}
+
+.s5-hub {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0, 246, 255, 0.06);
+  border: 1.5px solid rgba(0, 246, 255, 0.35);
+  border-radius: 50%;
+  width: clamp(110px, 13vw, 150px);
+  height: clamp(110px, 13vw, 150px);
+  padding: 12px;
+  justify-content: center;
+  box-shadow: 0 0 40px rgba(0, 246, 255, 0.1);
+}
+
+.s5-hub-icon {
+  width: clamp(42px, 5.5vw, 58px);
+  height: clamp(42px, 5.5vw, 58px);
+}
+
+.s5-hub-label {
+  font-family: var(--font-display);
+  font-size: clamp(0.72rem, 1.1vw, 0.9rem);
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.s5-hub-sub {
+  font-family: var(--font-body);
+  font-size: clamp(0.6rem, 0.85vw, 0.72rem);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.05em;
+}
+
+/* ── Key message banner ── */
+.s5-key-message {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 12px 52px 0;
+  padding: 14px 32px;
+  border: 1px solid rgba(0, 246, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(0, 246, 255, 0.04);
+  flex-shrink: 0;
+}
+
+.s5-quote-icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.s5-key-text {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.8vw, 1.4rem);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+  letter-spacing: -0.01em;
+}
+
+.s5-key-accent {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* ── Footer ── */
+.s5-footer {
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 52px 18px;
+  margin-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.s5-presenter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.04em;
+}
+
+.s5-presenter-name  { font-weight: 600; color: rgba(255, 255, 255, 0.5); }
+.s5-presenter-role  { font-weight: 400; }
+.s5-presenter-sep   { opacity: 0.35; }
+.s5-presenter-date  { font-weight: 300; }
+
+.s5-page {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.2);
+}

@@ -1,0 +1,357 @@
+/* ── Slide 7 — Three Intelligent Operating Modes ── */
+
+/* ── Root ── */
+.s7-root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #060606;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ── Ambient glow — top-left ── */
+.s7-glow {
+  position: absolute;
+  top: -140px;
+  left: -140px;
+  width: 540px;
+  height: 540px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    var(--accent-glow) 0%,
+    transparent 68%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Header ── */
+.s7-header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 52px 0;
+  flex-shrink: 0;
+}
+
+.s7-slide-label {
+  font-family: var(--font-body);
+  font-size: clamp(0.65rem, 1vw, 0.8rem);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* ── Title block ── */
+.s7-title-block {
+  position: relative;
+  z-index: 2;
+  padding: 14px 52px 0;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.s7-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3.2vw, 2.55rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.022em;
+  color: #ffffff;
+}
+
+.s7-title-accent {
+  color: var(--accent);
+}
+
+.s7-title-rule {
+  width: 48px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+.s7-lead {
+  font-family: var(--font-body);
+  font-size: clamp(0.82rem, 1.25vw, 0.98rem);
+  font-weight: 300;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.45);
+  max-width: 700px;
+}
+
+/* ── Cards grid ── */
+.s7-cards {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  padding: 18px 52px 0;
+  align-items: stretch;
+  min-height: 0;
+}
+
+/* ── Single card ── */
+.s7-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 18px 0;
+  transition: background 0.25s, border-color 0.25s, transform 0.25s;
+}
+
+.s7-card:hover {
+  background: rgba(0, 246, 255, 0.04);
+  border-color: rgba(0, 246, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+/* ── Top accent bar ── */
+.s7-card-topbar {
+  height: 3px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--accent) 0%, rgba(0, 246, 255, 0.1) 100%);
+  flex-shrink: 0;
+}
+
+/* ── Card head ── */
+.s7-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 16px 20px 0;
+  gap: 10px;
+}
+
+.s7-card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.s7-card-number {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.06);
+  letter-spacing: -0.04em;
+  user-select: none;
+}
+
+.s7-card-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+/* ── Pills ── */
+.s7-pill {
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.s7-pill--mode {
+  color: var(--accent);
+  background: rgba(0, 246, 255, 0.1);
+  border: 1px solid rgba(0, 246, 255, 0.25);
+}
+
+.s7-pill--cadence {
+  color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ── Card icon ── */
+.s7-card-icon {
+  width: clamp(42px, 5.5vw, 56px);
+  height: clamp(42px, 5.5vw, 56px);
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+.s7-card-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Divider ── */
+.s7-card-divider {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(0,246,255,0.2) 0%, transparent 80%);
+  margin: 14px 20px 0;
+}
+
+/* ── Headline ── */
+.s7-card-headline {
+  font-family: var(--font-display);
+  font-size: clamp(0.95rem, 1.45vw, 1.15rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: #ffffff;
+  padding: 12px 20px 0;
+  letter-spacing: -0.01em;
+}
+
+/* ── Cadence badge ── */
+.s7-cadence {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(0, 246, 255, 0.6);
+  padding: 4px 20px 0;
+}
+
+/* ── Bullet list ── */
+.s7-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 10px 20px 0;
+  flex: 1;
+}
+
+.s7-bullet {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  font-family: var(--font-body);
+  font-size: clamp(0.72rem, 1vw, 0.85rem);
+  font-weight: 300;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Quote bullets (third card) styled as italic */
+.s7-card--query .s7-bullet:nth-child(1),
+.s7-card--query .s7-bullet:nth-child(2) {
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.s7-bullet-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  margin-top: 5px;
+  opacity: 0.7;
+}
+
+/* ── Card footer note ── */
+.s7-card-footer-note {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 12px 20px 0;
+  font-family: var(--font-body);
+  font-size: clamp(0.7rem, 0.9vw, 0.8rem);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.3);
+  font-style: italic;
+  margin-top: auto;
+}
+
+.s7-footer-dash {
+  color: var(--accent);
+  font-style: normal;
+  opacity: 0.6;
+}
+
+/* ── Tagline banner ── */
+.s7-tagline {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 14px 52px 0;
+  padding: 12px 32px;
+  border: 1px solid rgba(0, 246, 255, 0.18);
+  border-radius: 8px;
+  background: rgba(0, 246, 255, 0.035);
+  flex-shrink: 0;
+}
+
+.s7-quote-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+
+.s7-tagline-text {
+  font-family: var(--font-display);
+  font-size: clamp(0.95rem, 1.7vw, 1.35rem);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: -0.01em;
+}
+
+.s7-tagline-accent {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* ── Footer ── */
+.s7-footer {
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 52px 18px;
+  margin-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.s7-presenter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.04em;
+}
+
+.s7-presenter-name  { font-weight: 600; color: rgba(255, 255, 255, 0.5); }
+.s7-presenter-role  { font-weight: 400; }
+.s7-presenter-sep   { opacity: 0.35; }
+.s7-presenter-date  { font-weight: 300; }
+
+.s7-page {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.2);
+}

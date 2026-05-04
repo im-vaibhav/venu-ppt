@@ -1,0 +1,340 @@
+/* ── Slide 4 — Even Great Systems Need Great Operations ── */
+
+/* ── Root ── */
+.s4-root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #060606;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ── Ambient glow — top-left ── */
+.s4-glow {
+  position: absolute;
+  top: -160px;
+  left: -160px;
+  width: 580px;
+  height: 580px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    var(--accent-glow) 0%,
+    transparent 68%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Header ── */
+.s4-header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 52px 0;
+  flex-shrink: 0;
+}
+
+.s4-slide-label {
+  font-family: var(--font-body);
+  font-size: clamp(0.65rem, 1vw, 0.8rem);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* ── Title block ── */
+.s4-title-block {
+  position: relative;
+  z-index: 2;
+  padding: 16px 52px 0;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.s4-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.65rem, 3.2vw, 2.55rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+
+.s4-title-accent {
+  color: var(--accent);
+}
+
+.s4-title-rule {
+  width: 48px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+/* ── Two-column body ── */
+.s4-body {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 2px 1fr;
+  gap: 0 36px;
+  padding: 20px 52px 0;
+  align-items: start;
+  min-height: 0;
+}
+
+/* ── Column divider ── */
+.s4-col-divider {
+  width: 1px;
+  align-self: stretch;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 20%,
+    rgba(255, 255, 255, 0.1) 80%,
+    transparent 100%
+  );
+  margin: 0 18px;
+}
+
+/* ── LEFT — problem rows ── */
+.s4-problems {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.s4-problem-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 14px 16px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: background 0.22s, border-color 0.22s;
+}
+
+.s4-problem-row:hover {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(0, 246, 255, 0.15);
+}
+
+.s4-problem-icon {
+  width: clamp(32px, 3.8vw, 40px);
+  height: clamp(32px, 3.8vw, 40px);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.s4-problem-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.s4-problem-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.s4-problem-label {
+  font-family: var(--font-display);
+  font-size: clamp(0.88rem, 1.3vw, 1.05rem);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.s4-problem-detail {
+  font-family: var(--font-body);
+  font-size: clamp(0.72rem, 1vw, 0.85rem);
+  font-weight: 300;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* ── RIGHT — stat cards ── */
+.s4-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.s4-stat-card {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 10px;
+  padding: 22px 24px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.25s;
+}
+
+.s4-stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent) 0%, transparent 65%);
+  opacity: 0.6;
+}
+
+.s4-stat-card:hover {
+  border-color: rgba(0, 246, 255, 0.28);
+}
+
+/* ── Gauge (MTTR) ── */
+.s4-gauge {
+  width: 100%;
+  max-width: 160px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* ── Noise bar (Alerts) ── */
+.s4-noise-bar-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.s4-noise-bar-track {
+  display: flex;
+  height: 14px;
+  border-radius: 7px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.s4-noise-bar-fill {
+  width: 40%;
+  background: var(--accent);
+  opacity: 0.9;
+  border-radius: 7px 0 0 7px;
+}
+
+.s4-noise-bar-signal {
+  width: 60%;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 0 7px 7px 0;
+}
+
+.s4-noise-legend {
+  display: flex;
+  gap: 20px;
+}
+
+.s4-noise-legend-noise,
+.s4-noise-legend-signal {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.s4-noise-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.s4-noise-dot--noise  { background: var(--accent); }
+.s4-noise-dot--signal { background: rgba(255, 255, 255, 0.25); }
+
+/* ── Stat value block ── */
+.s4-stat-value {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.s4-stat-number {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--accent);
+  letter-spacing: -0.03em;
+}
+
+.s4-stat-unit {
+  font-size: clamp(1rem, 1.8vw, 1.4rem);
+  font-weight: 400;
+  color: var(--accent);
+  opacity: 0.75;
+}
+
+.s4-stat-caption {
+  font-family: var(--font-body);
+  font-size: clamp(0.78rem, 1.1vw, 0.92rem);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.s4-stat-note {
+  font-family: var(--font-body);
+  font-size: clamp(0.72rem, 1vw, 0.84rem);
+  font-weight: 300;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.s4-stat-note strong {
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 600;
+}
+
+/* ── Footer ── */
+.s4-footer {
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 52px 18px;
+  margin-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.s4-presenter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.04em;
+}
+
+.s4-presenter-name  { font-weight: 600; color: rgba(255, 255, 255, 0.5); }
+.s4-presenter-role  { font-weight: 400; }
+.s4-presenter-sep   { opacity: 0.35; }
+.s4-presenter-date  { font-weight: 300; }
+
+.s4-page {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.2);
+}

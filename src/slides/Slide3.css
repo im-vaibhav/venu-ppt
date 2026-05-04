@@ -1,0 +1,252 @@
+/* ── Slide 3 — Meet EdgeFabric ── */
+
+/* ── Root ── */
+.s3-root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #060606;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ── Ambient glow — bottom-left ── */
+.s3-glow {
+  position: absolute;
+  bottom: -140px;
+  left: -140px;
+  width: 560px;
+  height: 560px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    var(--accent-glow) 0%,
+    transparent 68%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Header ── */
+.s3-header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 52px 0;
+  flex-shrink: 0;
+}
+
+.s3-slide-label {
+  font-family: var(--font-body);
+  font-size: clamp(0.65rem, 1vw, 0.8rem);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* EPAM <epam> wordmark — top-right */
+.s3-epam-wordmark {
+  height: 22px;
+  width: auto;
+  opacity: 0.65;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* ── Title block ── */
+.s3-title-block {
+  position: relative;
+  z-index: 2;
+  padding: 20px 52px 0;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.s3-title-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.s3-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 3.8vw, 3rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.s3-title-accent {
+  color: var(--accent);
+}
+
+.s3-title-rule {
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent) 0%, transparent 80%);
+  border-radius: 1px;
+  opacity: 0.4;
+}
+
+.s3-oneliner {
+  font-family: var(--font-body);
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  font-weight: 300;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.5);
+  max-width: 660px;
+}
+
+/* ── Pillars grid ── */
+.s3-pillars {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  padding: 22px 52px 0;
+  align-items: stretch;
+}
+
+/* ── Single pillar card ── */
+.s3-pillar {
+  position: relative;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  transition: background 0.25s, border-color 0.25s;
+}
+
+.s3-pillar:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(0, 246, 255, 0.3);
+}
+
+/* Left accent stripe — visible on hover */
+.s3-pillar-stripe {
+  width: 3px;
+  flex-shrink: 0;
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.s3-pillar:hover .s3-pillar-stripe {
+  opacity: 1;
+}
+
+/* Inner content */
+.s3-pillar-inner {
+  flex: 1;
+  padding: 24px 22px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ── Top row: ghost number + icon ── */
+.s3-pillar-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.s3-pillar-number {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.05);
+  letter-spacing: -0.03em;
+  user-select: none;
+}
+
+.s3-pillar-icon {
+  width: clamp(36px, 4.5vw, 48px);
+  height: clamp(36px, 4.5vw, 48px);
+  flex-shrink: 0;
+}
+
+.s3-pillar-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Pillar title ── */
+.s3-pillar-title {
+  font-family: var(--font-display);
+  font-size: clamp(0.92rem, 1.4vw, 1.12rem);
+  font-weight: 700;
+  line-height: 1.3;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+/* ── Pillar body ── */
+.s3-pillar-body {
+  font-family: var(--font-body);
+  font-size: clamp(0.75rem, 1vw, 0.88rem);
+  font-weight: 300;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.48);
+  flex: 1;
+}
+
+/* ── Footer ── */
+.s3-footer {
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 52px 20px;
+  margin-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.s3-presenter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.04em;
+}
+
+.s3-presenter-name {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.s3-presenter-role {
+  font-weight: 400;
+}
+
+.s3-presenter-sep {
+  opacity: 0.35;
+}
+
+.s3-presenter-date {
+  font-weight: 300;
+}
+
+.s3-page {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.2);
+}

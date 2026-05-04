@@ -1,0 +1,399 @@
+/* ── Slide 9 — From Alert to Resolution ── */
+
+/* ── Root ── */
+.s9-root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #060606;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ── Ambient glow — centre-right ── */
+.s9-glow {
+  position: absolute;
+  top: 30%;
+  right: -180px;
+  width: 560px;
+  height: 560px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    var(--accent-glow) 0%,
+    transparent 65%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Header ── */
+.s9-header {
+  position: relative;
+  z-index: 2;
+  padding: 26px 52px 0;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.s9-slide-label {
+  font-family: var(--font-body);
+  font-size: clamp(0.65rem, 1vw, 0.8rem);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* <epam> wordmark */
+.s9-epam-logo {
+  height: 24px;
+  width: auto;
+  opacity: 0.65;
+  flex-shrink: 0;
+}
+
+/* ── Title block ── */
+.s9-title-block {
+  position: relative;
+  z-index: 2;
+  padding: 12px 52px 0;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.s9-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.3vw, 2.65rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.022em;
+  color: #ffffff;
+}
+
+.s9-title-accent {
+  color: var(--accent);
+}
+
+.s9-title-rule {
+  width: 48px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+.s9-lead {
+  font-family: var(--font-body);
+  font-size: clamp(0.85rem, 1.3vw, 1rem);
+  font-weight: 300;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* ── Time comparison strip ── */
+.s9-time-strip {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 12px 52px 0;
+  flex-shrink: 0;
+}
+
+.s9-time-before,
+.s9-time-after {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.s9-time-label {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.s9-time-value {
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 1.8vw, 1.45rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.s9-time-value--bad {
+  color: rgba(255, 255, 255, 0.3);
+  text-decoration: line-through;
+  text-decoration-color: rgba(255,255,255,0.2);
+}
+
+.s9-time-value--good {
+  color: var(--accent);
+}
+
+.s9-time-arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.s9-time-arrow svg {
+  width: 44px;
+  height: 14px;
+}
+
+.s9-time-arrow-label {
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(0, 246, 255, 0.55);
+}
+
+/* ── Pipeline wrapper ── */
+.s9-pipeline {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 52px;
+  min-height: 0;
+  gap: 0;
+}
+
+/* ── Horizontal rail ── */
+.s9-rail {
+  position: absolute;
+  left: 52px;
+  right: 52px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 246, 255, 0.15) 8%,
+    rgba(0, 246, 255, 0.15) 92%,
+    transparent 100%
+  );
+  z-index: 0;
+}
+
+/* ── Step wrapper ── */
+.s9-step {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* ── Connector arrow ── */
+.s9-connector {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin: 0 2px;
+}
+
+.s9-connector svg {
+  width: 22px;
+  height: 10px;
+  display: block;
+}
+
+/* ── Node card ── */
+.s9-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 10px;
+  padding: 12px 10px 10px;
+  width: clamp(78px, 9.5vw, 108px);
+  position: relative;
+  transition: background 0.22s, border-color 0.22s, transform 0.22s;
+  cursor: default;
+}
+
+.s9-node:hover {
+  background: rgba(0, 246, 255, 0.06);
+  border-color: rgba(0, 246, 255, 0.35);
+  transform: translateY(-3px);
+}
+
+/* Phase-specific top border accent */
+.s9-step--trigger .s9-node  { border-top: 2px solid rgba(255,255,255,0.2); }
+.s9-step--ai .s9-node       { border-top: 2px solid var(--accent); }
+.s9-step--human .s9-node    { border-top: 2px solid rgba(255,255,255,0.55); }
+.s9-step--action .s9-node   { border-top: 2px solid var(--accent); }
+.s9-step--done .s9-node     { border-top: 2px solid var(--accent); }
+
+/* ── Phase badge ── */
+.s9-phase-badge {
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-body);
+  font-size: 0.52rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 1px 6px;
+  border-radius: 10px;
+  background: #060606;
+  border: 1px solid var(--phase-color);
+  color: var(--phase-color);
+  white-space: nowrap;
+}
+
+/* ── Node icon ── */
+.s9-node-icon {
+  width: clamp(30px, 3.8vw, 42px);
+  height: clamp(30px, 3.8vw, 42px);
+  flex-shrink: 0;
+}
+
+.s9-node-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Node label ── */
+.s9-node-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  font-family: var(--font-display);
+  font-size: clamp(0.6rem, 0.85vw, 0.76rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: rgba(255, 255, 255, 0.85);
+  text-align: center;
+}
+
+/* ── Time badge ── */
+.s9-time-badge {
+  font-family: var(--font-body);
+  font-size: clamp(0.55rem, 0.75vw, 0.68rem);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 2px 7px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.s9-time-badge--trigger {
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.4);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.s9-time-badge--ai,
+.s9-time-badge--action,
+.s9-time-badge--done {
+  background: rgba(0, 246, 255, 0.08);
+  color: var(--accent);
+  border: 1px solid rgba(0, 246, 255, 0.25);
+}
+
+.s9-time-badge--human {
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.65);
+  border: 1px solid rgba(255,255,255,0.18);
+}
+
+/* ── Key message banner ── */
+.s9-key-message {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 10px 52px 0;
+  padding: 12px 32px;
+  border: 1px solid rgba(0, 246, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(0, 246, 255, 0.04);
+  flex-shrink: 0;
+}
+
+.s9-quote-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+
+.s9-key-text {
+  font-family: var(--font-display);
+  font-size: clamp(0.9rem, 1.6vw, 1.25rem);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: -0.01em;
+}
+
+.s9-key-accent {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.s9-key-sep {
+  color: rgba(255, 255, 255, 0.25);
+  font-weight: 300;
+}
+
+/* ── Footer ── */
+.s9-footer {
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 52px 16px;
+  margin-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.s9-presenter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.04em;
+}
+
+.s9-presenter-name  { font-weight: 600; color: rgba(255, 255, 255, 0.5); }
+.s9-presenter-role  { font-weight: 400; }
+.s9-presenter-sep   { opacity: 0.35; }
+.s9-presenter-date  { font-weight: 300; }
+
+.s9-page {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.2);
+}

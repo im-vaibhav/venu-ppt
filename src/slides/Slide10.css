@@ -1,0 +1,614 @@
+/* ── Slide 10 — Plain-English System Health ── */
+
+/* ── Root ── */
+.s10-root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #060606;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ── Ambient glow — top-right ── */
+.s10-glow {
+  position: absolute;
+  top: -140px;
+  right: -140px;
+  width: 540px;
+  height: 540px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    var(--accent-glow) 0%,
+    transparent 68%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Header ── */
+.s10-header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 26px 52px 0;
+  flex-shrink: 0;
+}
+
+.s10-slide-label {
+  font-family: var(--font-body);
+  font-size: clamp(0.65rem, 1vw, 0.8rem);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* ── Title block ── */
+.s10-title-block {
+  position: relative;
+  z-index: 2;
+  padding: 12px 52px 0;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.s10-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.2vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.022em;
+  color: #ffffff;
+}
+
+.s10-title-accent {
+  color: var(--accent);
+}
+
+.s10-title-rule {
+  width: 48px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+/* ── Two-column body ── */
+.s10-body {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 36px 1.4fr;
+  gap: 0 8px;
+  padding: 16px 52px 0;
+  min-height: 0;
+  align-items: stretch;
+}
+
+/* ── Column shared ── */
+.s10-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* ── Column header ── */
+.s10-col-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  flex-shrink: 0;
+}
+
+.s10-col-badge {
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 2px 9px;
+  border-radius: 20px;
+}
+
+.s10-col-badge--before {
+  color: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.s10-col-badge--after {
+  color: var(--accent);
+  background: rgba(0, 246, 255, 0.1);
+  border: 1px solid rgba(0, 246, 255, 0.3);
+}
+
+.s10-col-title {
+  font-family: var(--font-display);
+  font-size: clamp(0.88rem, 1.3vw, 1.05rem);
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* ── Before: pain items ── */
+.s10-before-items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.s10-before-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.02);
+  transition: background 0.2s;
+}
+
+.s10-before-row:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* Strikethrough hint on before rows */
+.s10-before-row::before {
+  content: '';
+  position: absolute;
+  display: none;
+}
+
+.s10-before-icon {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.s10-before-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.s10-before-text {
+  font-family: var(--font-body);
+  font-size: clamp(0.75rem, 1.05vw, 0.9rem);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1.4;
+  text-decoration: line-through;
+  text-decoration-color: rgba(255, 255, 255, 0.15);
+}
+
+/* ── Before: frustration visual ── */
+.s10-frustration {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 6px;
+}
+
+.s10-frustration-screen {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 14px 16px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.s10-frust-bar {
+  height: 7px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.s10-frust-bar--1 { width: 100%; }
+.s10-frust-bar--2 { width: 75%; }
+.s10-frust-bar--3 { width: 90%; }
+.s10-frust-bar--4 { width: 55%; }
+
+.s10-frust-tabs {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+  flex-wrap: wrap;
+}
+
+.s10-frust-tabs span {
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  padding: 2px 7px;
+  letter-spacing: 0.05em;
+}
+
+.s10-frustration-caption {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.2);
+  font-style: italic;
+  text-align: center;
+}
+
+/* ── Centre divider ── */
+.s10-divider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding: 36px 0 16px;
+}
+
+.s10-divider-line {
+  flex: 1;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 246, 255, 0.18) 30%,
+    rgba(0, 246, 255, 0.18) 70%,
+    transparent 100%
+  );
+}
+
+.s10-divider-vs {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(0, 246, 255, 0.06);
+  border: 1px solid rgba(0, 246, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin: 10px 0;
+}
+
+.s10-divider-vs svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ── Chat interface ── */
+.s10-chat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(0, 246, 255, 0.15);
+  border-radius: 10px;
+  padding: 12px 12px 8px;
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* ── Chat message ── */
+.s10-msg {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.s10-msg--user {
+  flex-direction: row-reverse;
+}
+
+.s10-avatar {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.s10-msg--agent .s10-avatar {
+  background: rgba(0, 246, 255, 0.08);
+  border-color: rgba(0, 246, 255, 0.25);
+}
+
+.s10-avatar svg {
+  width: 13px;
+  height: 13px;
+}
+
+/* ── Chat bubble ── */
+.s10-bubble {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 88%;
+}
+
+.s10-msg--user .s10-bubble {
+  align-items: flex-end;
+}
+
+.s10-bubble-text {
+  font-family: var(--font-body);
+  font-size: clamp(0.7rem, 0.95vw, 0.84rem);
+  font-weight: 400;
+  line-height: 1.5;
+  padding: 7px 11px;
+  border-radius: 8px;
+}
+
+.s10-msg--user .s10-bubble-text {
+  background: rgba(255, 255, 255, 0.07);
+  color: rgba(255, 255, 255, 0.8);
+  border-radius: 8px 8px 2px 8px;
+  font-style: italic;
+}
+
+.s10-msg--agent .s10-bubble-text {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: clamp(0.65rem, 0.88vw, 0.78rem);
+  padding: 4px 0;
+}
+
+/* ── Evidence rows ── */
+.s10-evidence {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: rgba(0, 246, 255, 0.04);
+  border: 1px solid rgba(0, 246, 255, 0.12);
+  border-radius: 7px;
+  padding: 7px 10px;
+}
+
+.s10-evidence-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-size: clamp(0.62rem, 0.85vw, 0.75rem);
+  line-height: 1.5;
+}
+
+.s10-evidence-icon {
+  flex-shrink: 0;
+  font-size: 0.7rem;
+}
+
+.s10-evidence-label {
+  font-weight: 700;
+  color: var(--accent);
+  flex-shrink: 0;
+  min-width: 36px;
+}
+
+.s10-evidence-detail {
+  color: rgba(255, 255, 255, 0.55);
+  font-weight: 300;
+}
+
+/* ── Conclusion ── */
+.s10-conclusion {
+  font-family: var(--font-body);
+  font-size: clamp(0.65rem, 0.9vw, 0.78rem);
+  font-weight: 400;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.65);
+  padding: 6px 10px;
+  border-left: 2px solid var(--accent);
+  background: rgba(0, 246, 255, 0.03);
+  border-radius: 0 6px 6px 0;
+}
+
+/* ── Confidence bar ── */
+.s10-confidence {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.s10-confidence-label {
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+  white-space: nowrap;
+}
+
+.s10-confidence-track {
+  flex: 1;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.s10-confidence-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent) 0%, rgba(0,246,255,0.5) 100%);
+  border-radius: 2px;
+}
+
+.s10-confidence-value {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+/* ── Action proposal card ── */
+.s10-action-card {
+  background: rgba(0, 246, 255, 0.05);
+  border: 1px solid rgba(0, 246, 255, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.s10-action-header {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 10px;
+  border-bottom: 1px solid rgba(0, 246, 255, 0.1);
+  background: rgba(0, 246, 255, 0.06);
+}
+
+.s10-action-header svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.s10-action-type {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent);
+  flex: 1;
+}
+
+.s10-action-gate {
+  font-family: var(--font-body);
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1px 7px;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+
+.s10-action-rows {
+  padding: 7px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.s10-action-row {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  font-family: var(--font-body);
+  font-size: clamp(0.62rem, 0.85vw, 0.74rem);
+  line-height: 1.5;
+}
+
+.s10-action-key {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.35);
+  min-width: 42px;
+  text-transform: uppercase;
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+}
+
+.s10-action-val {
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* ── Chat input bar ── */
+.s10-input-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: auto;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(0, 246, 255, 0.15);
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.s10-input-placeholder {
+  font-family: var(--font-body);
+  font-size: clamp(0.68rem, 0.9vw, 0.8rem);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.22);
+  font-style: italic;
+}
+
+.s10-input-send {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  background: rgba(0, 246, 255, 0.12);
+  border: 1px solid rgba(0, 246, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.s10-input-send svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* ── Footer ── */
+.s10-footer {
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 52px 16px;
+  margin-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.s10-presenter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.04em;
+}
+
+.s10-presenter-name  { font-weight: 600; color: rgba(255, 255, 255, 0.5); }
+.s10-presenter-role  { font-weight: 400; }
+.s10-presenter-sep   { opacity: 0.35; }
+.s10-presenter-date  { font-weight: 300; }
+
+.s10-page {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.2);
+}
